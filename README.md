@@ -2,6 +2,8 @@
 
 using:
 
+    - from astar_python.astar import Astar
+
 build your weight map:
 
 ```python
@@ -91,7 +93,7 @@ Exemple: The number '1' is the way taken, others are weights
 [0, 0, 0, 0, 0, 5, 1, 0, 0, 0, 0]
 [0, 0, 0, 0, 0, None, 0, 1, 1, 1, 1]
 
-# Please astar, come here! (need to be enough close of the weight -5)
+astar_python
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 [0, 1, 0, -5, -5, -5, 0, 0, 0, 0, 0]
 [0, 0, 1, 0, 0, 5, 1, 0, 0, 0, 0]
