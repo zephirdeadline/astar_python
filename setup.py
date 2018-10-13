@@ -54,7 +54,7 @@ setup(
     include_package_data=True,
  
     # Une url qui pointe vers la page officielle de votre lib
-    url='https://github.com/zephirdeadline/',
+    url='https://github.com/zephirdeadline/astar_python',
  
     # Il est d'usage de mettre quelques metadata à propos de sa lib
     # Pour que les robots puissent facilement la classer.
