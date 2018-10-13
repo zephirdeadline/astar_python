@@ -5,17 +5,17 @@ from setuptools import setup, find_packages
  
 # notez qu'on import la lib
 # donc assurez-vous que l'importe n'a pas d'effet de bord
-import astar
+import astar_python
  
 # Ceci n'est qu'un appel de fonction. Mais il est trèèèèèèèèèèès long
 # et il comporte beaucoup de paramètres
 setup(
  
     # le nom de votre bibliothèque, tel qu'il apparaitre sur pypi
-    name='Astar',
+    name='astar_python',
  
     # la version du code
-    version=astar.__version__,
+    version=astar_python.__version__,
  
     # Liste les packages à insérer dans la distribution
     # plutôt que de le faire à la main, on utilise la foncton
@@ -23,7 +23,7 @@ setup(
     # python recursivement dans le dossier courant.
     # C'est pour cette raison que l'on a tout mis dans un seul dossier:
     # on peut ainsi utiliser cette fonction facilement
-    packages=['astar'],
+    packages=['astar_python'],
     #find_packages(),
  
     # votre pti nom
