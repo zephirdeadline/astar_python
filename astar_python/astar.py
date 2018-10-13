@@ -98,3 +98,4 @@ class Astar:
                     open_list.append(neighbour)
 
         return None
+
