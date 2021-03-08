@@ -33,25 +33,25 @@ class Astar:
     def heuristic(self, current, other):
         return abs(current.x - other.x) + abs(current.y - other.y)
 
-    def neighbours(self, matrix, current):
+    def neighbours(self, matrix, current, allow_diagonals):
         neighbours_list = []
-        if current.x - 1 >= 0 and current.y - 1 >= 0 and matrix[current.y - 1][current.x - 1].weight is not None:
+        if current.x - 1 >= 0 and current.y - 1 >= 0 and allow_diagonals and matrix[current.y - 1][current.x - 1].weight is not None:
             neighbours_list.append(matrix[current.y - 1][current.x - 1])
         if current.x - 1 >= 0 and matrix[current.y][current.x - 1].weight is not None:
             neighbours_list.append(matrix[current.y][current.x - 1])
-        if current.x - 1 >= 0 and current.y + 1 < len(matrix) and matrix[current.y + 1][
+        if current.x - 1 >= 0 and current.y + 1 < len(matrix) and allow_diagonals and matrix[current.y + 1][
             current.x - 1].weight is not None:
             neighbours_list.append(matrix[current.y + 1][current.x - 1])
         if current.y - 1 >= 0 and matrix[current.y - 1][current.x].weight is not None:
             neighbours_list.append(matrix[current.y - 1][current.x])
         if current.y + 1 < len(matrix) and matrix[current.y + 1][current.x].weight is not None:
             neighbours_list.append(matrix[current.y + 1][current.x])
-        if current.x + 1 < len(matrix[0]) and current.y - 1 >= 0 and matrix[current.y - 1][
+        if current.x + 1 < len(matrix[0]) and current.y - 1 >= 0 and allow_diagonals and matrix[current.y - 1][
             current.x + 1].weight is not None:
             neighbours_list.append(matrix[current.y - 1][current.x + 1])
         if current.x + 1 < len(matrix[0]) and matrix[current.y][current.x + 1].weight is not None:
             neighbours_list.append(matrix[current.y][current.x + 1])
-        if current.x + 1 < len(matrix[0]) and current.y + 1 < len(matrix) and matrix[current.y + 1][
+        if current.x + 1 < len(matrix[0]) and current.y + 1 < len(matrix) and allow_diagonals and matrix[current.y + 1][
             current.x + 1].weight is not None:
             neighbours_list.append(matrix[current.y + 1][current.x + 1])
         return neighbours_list
@@ -64,7 +64,7 @@ class Astar:
             node_tmp = node_tmp.parent
         return list(reversed(path))
 
-    def run(self, point_start, point_end):
+    def run(self, point_start, point_end, allow_diagonals=True):
         matrix = self.mat
         start = self.Node(point_start[0], point_start[1])
         end = self.Node(point_end[0], point_end[1])
@@ -88,7 +88,7 @@ class Astar:
 
             closed_list.append(current_node)
 
-            for neighbour in self.neighbours(matrix, current_node):
+            for neighbour in self.neighbours(matrix, current_node, allow_diagonals):
                 if neighbour in closed_list:
                     continue
                 if neighbour.heuristic < current_node.heuristic or neighbour not in open_list:
